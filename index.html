@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackJack Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="middle-container">
+            <div class="user-side">
+                <h1 class="user-side-result">User Score: <span id="user-score-span">0</span></h1>
+                <div id="user-side-box"></div>
+            </div>
+            <div class="dealer-side">
+                <h1 class="dealer-side-result">Dealer Score: <span id="dealer-score-span">0</span></h1>
+                <div id="dealer-side-box"></div>
+            </div>
+        </div>
+        <div class="button-section">
+            <div id="hit-button" class="btn">HIT</div>
+            <div id="stand-button" class="btn">STAND</div>
+            <div id="deal-button" class="btn">DEAL</div>
+        </div>
+
+        <table class="score-board">
+            <tr>
+                <td>Wins</td>
+                <td>Loses</td>
+                <td>Draws</td>
+            </tr>
+            <tr>
+                <td id="win-score">0</td>
+                <td id="loss-score">0</td>
+                <td id="draw-score">0</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

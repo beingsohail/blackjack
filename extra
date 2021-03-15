@@ -1,0 +1,91 @@
+
+let currentScoreUser = 0;
+let currentScoreBot = 0;
+const maxScore = 21;
+const pointsOfCard = {
+    "A.png":11,
+    "2.png":2,
+    "3.png":3,
+    "4.png":4,
+    "5.png":5,
+    "6.png":6,
+    "7.png":7,
+    "8.png":8,
+    "9.png":9,
+    "10.png":10,
+    "K.png":10,
+    "Q.png":10,
+    "J.png":10,
+}
+
+const botStopPoints = [18,19,20,21];
+
+
+let h1 = document.createElement("h1");
+let score1 = document.querySelector(".user-score");
+
+
+function randomImage() {
+    let randomNumber = Math.floor(Math.random()*13);
+    let cards = ["A.png","2.png","3.png","4.png","5.png","6.png","7.png","8.png","9.png","10.png","K.png","Q.png","J.png",]
+    return cards[randomNumber];
+}
+
+function selectCard(player) {
+    let img = document.createElement("img");
+    let imgName = randomImage();
+    let imgSrc = "images/"+imgName;
+    img.setAttribute("src", imgSrc);
+    let userSideBox = document.querySelector(".card-box1");
+    userSideBox.appendChild(img);
+
+    
+    if (player==0){
+        player = pointsOfCard[imgName];
+    } else {
+        player = liveScore(imgName);
+    }
+
+    h1.innerText = player;
+    score1.appendChild(h1);
+        
+
+    if(player>21) {
+        //it has to jump to bot's turn, but for now its temparary
+        standClicked();
+    }
+    
+}
+
+function userPlay() {
+    selectCard(currentScoreUser);
+}
+
+
+function standClicked(){
+    botPlay(currentScoreBot);
+}
+
+
+function botPlay(currentScoreBot) {
+
+    while (currentScoreBot<21) {
+        if ((currentScoreBot == 18) || (currentScoreBot == 19) || (currentScoreBot == 20) || (currentScoreBot == 21)) {
+            declareResult();
+        }
+        else if (currentScoreBot >= 0) {
+            selectCard(currentScoreBot);
+        }
+    }
+    
+}
+
+
+function liveScore(i) {
+    score = currentScoreUser + pointsOfCard[i];
+    return score;
+}
+
+function resetGame() {
+    document.location.reload();
+}
